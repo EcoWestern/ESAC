@@ -125,9 +125,13 @@ general-intelligence, agentic-ai, agentic-evaluation, specification,
 reproducibility, contamination, documentation, mit-license, ecowestern
 ```
 
-Both are set with `gh repo edit`. Each command is one line on purpose: a trailing backslash is
-a bash continuation, and pasting one into PowerShell runs nothing at all, including the lines
-above it.
+Both are set from the repository page, with no tooling: **About**, then the gear icon. Paste the
+description, then paste the topic list, which the field splits on commas.
+
+The GitHub CLI does the same thing in two commands, if it is installed: `winget install --id
+GitHub.cli`, then `gh auth login`. Each command below is one line on purpose, because a trailing
+backslash is a bash continuation and pasting one into PowerShell runs nothing at all, including
+the lines above it.
 
 ```bash
 gh repo edit EcoWestern/ESAC --description "A program of compact benchmarks that measure difficult capabilities without measuring budget. Two suites: ESAC-GI, released and runnable, and ESAC-AG, specified and not yet implemented. Items are generators rather than stored questions, and every score carries the version tag of the instrument that produced it."
@@ -139,8 +143,9 @@ gh repo edit EcoWestern/ESAC --add-topic benchmark --add-topic ai-benchmark --ad
 
 Still to apply here, for the same reasons as in the suite repository: branch and tag rulesets,
 private vulnerability reporting, which `SECURITY.md` links to, secret scanning with push
-protection, and Dependabot alerts. The suite repository's `.github/rulesets/` is the shape to
-copy.
+protection, and Dependabot alerts. All of them are repository settings pages, and the rulesets
+can be imported straight from this repository's or the suite's `.github/rulesets/` JSON through
+**Settings**, **Rules**, **Import a ruleset**. No command line tool is required for any of it.
 
 ## Governance
 
