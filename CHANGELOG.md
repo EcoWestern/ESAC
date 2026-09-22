@@ -32,6 +32,17 @@ Two things carry versions, and they are not the same kind of thing:
   a file, for both repositories, covering descriptions, topics, rulesets, the security features
   that have to be switched on, and what to do at release time. Kept out of the README, which is
   written for readers rather than for whoever runs the repositories.
+- **Rulesets as code**, in `.github/rulesets/`: the default-branch and release-tag rulesets as
+  JSON, with the reasoning behind the admin bypass that keeps direct pushes to `main` working.
+  Pushing them applies nothing, so each is imported once per repository.
+- **A required check that runs on pull requests.** The Pages workflow now runs its internal link
+  check as a job of its own, named `Check links`, on pull requests as well as on `main`. It is the
+  context the ruleset requires, and it is deliberately independent of the site build so that it
+  does not depend on Pages being enabled.
+- **The pull request policy is enforced, not just stated.** `.github/workflows/close-pull-requests.yml`
+  answers a pull request from outside the organisation with the notice in
+  `.github/pull-request-notice.md` and closes it, exempting members, collaborators, and
+  maintainers, and checking out only the base commit.
 
 ### Changed
 

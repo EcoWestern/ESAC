@@ -49,10 +49,15 @@ Set the website field to the Pages URL once the site is live.
 
 ### Rulesets
 
-Two rulesets, as JSON in the suite repository's `.github/rulesets/`: `main.json` for the default
-branch, which refuses deletion, force pushes, and merge commits and requires the CI checks, and
+Two rulesets, as JSON in **each** repository's `.github/rulesets/`: `main.json` for the default
+branch, which refuses deletion, force pushes, and merge commits and requires a status check, and
 `tags.json` for `v*`, which refuses deletion and moving. Pushing them applies nothing; each is
 imported once per repository through **Settings**, **Rules**, **Import a ruleset**.
+
+The required check differs by repository, because the CI does. The suite requires its three
+workflow jobs. This repository requires `Check links`, which is deliberately a job of its own
+rather than part of the site build, so that it runs on pull requests as well as on `main` and does
+not depend on Pages being enabled.
 
 Both carry a bypass for the repository admin role, and that is deliberate. Requiring status checks
 without a bypass blocks direct pushes to `main` entirely, because a check cannot have passed on a
@@ -75,9 +80,9 @@ are only selectable once CI has run on the branch.
 ### Pages
 
 **Settings**, **Pages**, **Source: GitHub Actions**. The site builds from `main` with
-`.github/workflows/pages.yml` and publishes to `https://ecowestern.github.io/ESAC/`. The workflow
-runs `tools/check-links.mjs` before the build, so a broken internal link fails the deploy instead
-of shipping.
+`.github/workflows/pages.yml` and publishes to `https://ecowestern.github.io/ESAC/`. The link
+check is its own job and runs on pull requests too, so a broken internal link fails the build
+rather than shipping, and the branch ruleset can require it.
 
 ## Still to apply
 

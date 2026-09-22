@@ -1,34 +1,53 @@
 name: Pages
 
-# Builds the documentation site from the same Markdown the repository renders, so there is
-# one copy of every document rather than a site copy that drifts from it. The internal link
-# check runs before the build, because a broken link in the specification is a defect in the
-# normative document rather than a cosmetic problem.
+# Builds the documentation site from the same Markdown the repository renders, so there is one
+# copy of every document rather than a site copy that drifts from it.
+#
+# The link check is a job of its own rather than a step inside the build, so that it runs on
+# pull requests, needs no Pages configuration, and can be the status check a ruleset requires.
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
+# Read-only at the workflow level. The jobs that publish declare the extra permissions they need,
+# so a pull request cannot obtain them.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build
+  links:
+    name: Check links
     runs-on: ubuntu-latest
     steps:
       - name: Check out
         uses: actions/checkout@v4
 
+      # A broken relative link in the specification is a defect in the normative document, so
+      # this is a job of its own: it runs on pull requests as well as on main, and it is the
+      # context a branch ruleset requires.
       - name: Check internal links
         run: node tools/check-links.mjs
+
+  build:
+    name: Build
+    needs: links
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -45,7 +64,11 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
