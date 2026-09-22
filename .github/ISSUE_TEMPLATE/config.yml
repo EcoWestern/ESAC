@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Report a security issue or a specification-integrity problem
+    url: https://github.com/EcoWestern/ESAC/security/advisories/new
+    about: "Please report privately. Do not open a public issue for a held-out seed leak, a canary exposure, or a clause that would produce two different scores."
+
+  - name: Challenge an item in ESAC-GI
+    url: https://github.com/EcoWestern/ESAC-GI/issues/new/choose
+    about: "An item that is wrong, ambiguous, or guessable is the most valuable report the program can receive. Items live in the suite repository."
+
+  - name: Report a defect in the harness, the CLI, or the scoring
+    url: https://github.com/EcoWestern/ESAC-GI/issues/new/choose
+    about: "The code lives in EcoWestern/ESAC-GI, so harness reports belong there."

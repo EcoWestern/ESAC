@@ -1,0 +1,9 @@
+# Code owners.
+#
+# Every path is owned by the maintainers, so a fork pull request requests review
+# automatically and a branch ruleset can require review if the project ever moves to a
+# pull-request flow. Upstream pull requests are not accepted (see CONTRIBUTING.md); this file
+# exists so that fork-based work routes cleanly and so a future change of policy is a
+# one-line change.
+
+*    @EcoWestern/oss-maintainers

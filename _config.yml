@@ -1,0 +1,50 @@
+# Site configuration.
+#
+# The site is built from these files by GitHub Actions (see .github/workflows/pages.yml)
+# and deployed to GitHub Pages. It is deliberately built from the same Markdown that the
+# repository renders, so there is one copy of every document rather than a site copy that
+# drifts from it.
+
+title: ESAC
+description: >-
+  EcoWestern Short and Cheap Benchmark. A program of compact benchmarks that measure
+  difficult capabilities without measuring budget.
+
+url: "https://ecowestern.github.io"
+baseurl: "/ESAC"
+
+# Plugins used, all of which are in the GitHub Pages allowlist:
+#   optional-front-matter  renders Markdown that has no front matter, so the specification
+#                          does not need a YAML block that GitHub would display as a table
+#   default-layout         gives every page the layout in _layouts/default.html
+#   titles-from-headings   takes each page's title from its first heading
+#   relative-links         rewrites a link such as specs/spec.md to the page it becomes,
+#                          so the same link works on the site and in the repository
+#   readme-index           serves README.md as the site home, so the landing page has one
+#                          source rather than two
+#   sitemap                emits a sitemap for the built site
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
+  - jekyll-readme-index
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+relative_links:
+  enabled: true
+  collections: false
+
+# Nothing here should reach the published site.
+exclude:
+  - tools/
+  - CITATION.cff
+  - .editorconfig
+  - .gitattributes
+  - .gitignore

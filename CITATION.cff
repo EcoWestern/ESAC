@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use ESAC in research, evaluation reports, or comparative claims, cite this repository and always state the suite version you measured against."
+title: "ESAC: EcoWestern Short and Cheap Benchmark"
+abstract: >-
+  A program of compact benchmarks that measure difficult capabilities without measuring
+  budget. ESAC-GI (General Intelligence) is released; ESAC-AG (Agentic Work and Capability)
+  is specified and not implemented. Items are generators rather than stored questions, so
+  expected answers are computed rather than recalled, and every score is reported against a
+  version tag that names the instrument which produced it.
+type: software
+authors:
+  - name: EcoWestern
+    website: "https://github.com/EcoWestern"
+repository-code: "https://github.com/EcoWestern/ESAC"
+url: "https://ecowestern.github.io/ESAC/"
+license: MIT
+license-url: "https://github.com/EcoWestern/ESAC/blob/main/LICENSE"
+date-released: "2026-09-22"
+keywords:
+  - benchmark
+  - evaluation
+  - large language models
+  - general intelligence
+  - agentic evaluation
+  - reproducibility
+  - contamination resistance
