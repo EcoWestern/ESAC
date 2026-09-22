@@ -28,8 +28,10 @@ Two things carry versions, and they are not the same kind of thing:
 - **`specs/README.md`**, which documents how the specification is amended: amendments append
   rather than edit, they name what they supersede, the supersession map is extended, and the
   major-or-minor consequence is decided and recorded.
-- **A repository settings section** in the README, recording the repository description and
-  the topic list, since neither of those lives in a file.
+- **Maintainer notes**, in `MAINTAINERS.md`: the settings that live in a web form rather than in
+  a file, for both repositories, covering descriptions, topics, rulesets, the security features
+  that have to be switched on, and what to do at release time. Kept out of the README, which is
+  written for readers rather than for whoever runs the repositories.
 
 ### Changed
 

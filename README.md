@@ -104,49 +104,6 @@ instructions are in the [ESAC-GI README](https://github.com/EcoWestern/ESAC-GI#r
   rotation. It determines how much weight a published number carries on release day, and it
   is flagged as open in the specification.
 
-## Repository settings
-
-Some of what this repository relies on is not a file, so it is recorded here: a fork can
-reproduce it, and nothing is lost when a setting lives only in a web form.
-
-The repository description, 312 characters, inside GitHub's limit of 350:
-
-> A program of compact benchmarks that measure difficult capabilities without measuring
-> budget. Two suites: ESAC-GI, released and runnable, and ESAC-AG, specified and not yet
-> implemented. Items are generators rather than stored questions, and every score carries the
-> version tag of the instrument that produced it.
-
-Topics, most load-bearing first. Fifteen of GitHub's twenty slots, all lowercase and
-hyphenated as GitHub requires:
-
-```
-benchmark, ai-benchmark, llm, llm-benchmark, llm-evaluation, evaluation,
-general-intelligence, agentic-ai, agentic-evaluation, specification,
-reproducibility, contamination, documentation, mit-license, ecowestern
-```
-
-Both are set from the repository page, with no tooling: **About**, then the gear icon. Paste the
-description, then paste the topic list, which the field splits on commas.
-
-The GitHub CLI does the same thing in two commands, if it is installed: `winget install --id
-GitHub.cli`, then `gh auth login`. Each command below is one line on purpose, because a trailing
-backslash is a bash continuation and pasting one into PowerShell runs nothing at all, including
-the lines above it.
-
-```bash
-gh repo edit EcoWestern/ESAC --description "A program of compact benchmarks that measure difficult capabilities without measuring budget. Two suites: ESAC-GI, released and runnable, and ESAC-AG, specified and not yet implemented. Items are generators rather than stored questions, and every score carries the version tag of the instrument that produced it."
-```
-
-```bash
-gh repo edit EcoWestern/ESAC --add-topic benchmark --add-topic ai-benchmark --add-topic llm --add-topic llm-benchmark --add-topic llm-evaluation --add-topic evaluation --add-topic general-intelligence --add-topic agentic-ai --add-topic agentic-evaluation --add-topic specification --add-topic reproducibility --add-topic contamination --add-topic documentation --add-topic mit-license --add-topic ecowestern
-```
-
-Still to apply here, for the same reasons as in the suite repository: branch and tag rulesets,
-private vulnerability reporting, which `SECURITY.md` links to, secret scanning with push
-protection, and Dependabot alerts. All of them are repository settings pages, and the rulesets
-can be imported straight from this repository's or the suite's `.github/rulesets/` JSON through
-**Settings**, **Rules**, **Import a ruleset**. No command line tool is required for any of it.
-
 ## Governance
 
 ESAC is published under the MIT licence, to be read, run, audited, and forked. Issues are
@@ -157,3 +114,6 @@ cannot change through an external merge path.
 
 The specification lives here rather than in a suite repository for the same reason. When two
 suites cite the same clause, there has to be one clause to cite.
+
+Maintainer chores, including every setting that lives in a web form rather than in a file, are in
+[MAINTAINERS.md](https://github.com/EcoWestern/ESAC/blob/main/MAINTAINERS.md).

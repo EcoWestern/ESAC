@@ -44,6 +44,7 @@ relative_links:
 # Nothing here should reach the published site.
 exclude:
   - tools/
+  - MAINTAINERS.md
   - CITATION.cff
   - .editorconfig
   - .gitattributes
