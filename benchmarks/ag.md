@@ -11,8 +11,8 @@ in a single turn, ESAC-AG measures work performed across turns against an enviro
 choosing tools, planning under a budget, writing and running code, recovering from failure,
 and resisting instructions that arrive inside tool output rather than from the user.
 
-The full specification is in [the ESAC spec](../specs/spec.md), under
-[Part I: the original design basis](../specs/spec.md).
+The full specification is in [the constitution](../specs/constitution.md), which is the design
+basis for both suites and is amended rather than rewritten.
 
 ## What it is specified to measure
 
@@ -80,7 +80,7 @@ Recorded plainly, so that progress is measurable rather than asserted:
 
 - **Held-out custody.** The same open question as the rest of the program: whether published
   held-out evaluations are run by one maintainer or by a small trusted rotation. It is
-  [flagged as open in the specification](../specs/spec.md#open-questions).
+  [flagged as open in the constitution](../specs/constitution.md#7-open-questions).
 - **Budget calibration.** The turn budgets above are specified but not yet validated against
   real models, and a budget that is merely generous measures nothing.
 - **What counts as compliance under injection.** The category distinguishes complying from

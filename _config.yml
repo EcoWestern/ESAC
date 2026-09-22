@@ -18,7 +18,7 @@ baseurl: "/ESAC"
 #                          does not need a YAML block that GitHub would display as a table
 #   default-layout         gives every page the layout in _layouts/default.html
 #   titles-from-headings   takes each page's title from its first heading
-#   relative-links         rewrites a link such as specs/spec.md to the page it becomes,
+#   relative-links         rewrites a link such as specs/constitution.md to the page it becomes,
 #                          so the same link works on the site and in the repository
 #   readme-index           serves README.md as the site home, so the landing page has one
 #                          source rather than two

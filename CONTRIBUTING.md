@@ -47,6 +47,6 @@ GitHub Actions ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)) an
 Jekyll plugins from the GitHub Pages allowlist, listed with their reasons in `_config.yml`.
 
 The consequence for editing: a page needs no YAML front matter, and a relative link written
-as `specs/spec.md` works both on GitHub and on the published site. `tools/check-links.mjs`
-verifies that every relative link resolves and that every page named in the site navigation
-exists, so a rename cannot quietly break the site.
+as `amendments/001-first-amendment.md` works both on GitHub and on the published site.
+`tools/check-links.mjs` verifies that every relative link resolves and that every page named in
+the site navigation exists, so a rename cannot quietly break the site.

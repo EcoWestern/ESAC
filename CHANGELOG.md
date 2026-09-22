@@ -8,10 +8,10 @@ what a score is comparable against.
 
 Two things carry versions, and they are not the same kind of thing:
 
-- **The specification** is amended rather than versioned. Each amendment is a numbered part
-  appended to `specs/spec.md`, and it names the clauses it supersedes.
+- **The constitution** is amended rather than versioned. It is the design basis, in numbered
+  sections, and each amendment is a separate file that names the provisions it supersedes.
 - **Each suite** has a semantic version, and that is the unit a score is comparable within,
-  per the specification's Part II §9. `ESAC-GI v1.0` is a version. "75 points" is not.
+  per constitution §7 and amendment 001 §9. `ESAC-GI v1.0` is a version. "75 points" is not.
 
 ## [Unreleased]
 

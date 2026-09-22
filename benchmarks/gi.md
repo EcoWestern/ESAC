@@ -9,7 +9,7 @@ question.
 
 - **Code and harness:** [EcoWestern/ESAC-GI](https://github.com/EcoWestern/ESAC-GI)
 - **Item-level scoring reference:** [ESAC-GI specs/scoring.md](https://github.com/EcoWestern/ESAC-GI/blob/main/specs/scoring.md)
-- **Specification:** [ESAC spec, Part I](../specs/spec.md) and the amendments that govern it
+- **Specification:** [the constitution](../specs/constitution.md), and [amendment 001](../specs/amendments/001-first-amendment.md) for the decisions that changed it
 - **Version tag:** `ESAC-GI v1.0`. Scores are comparable within a major version and nowhere
   else.
 

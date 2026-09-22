@@ -28,8 +28,9 @@ const NAVIGATION_PAGES = [
   "README.md",
   "benchmarks/gi.md",
   "benchmarks/ag.md",
-  "specs/spec.md",
+  "specs/constitution.md",
   "specs/README.md",
+  "specs/amendments/001-first-amendment.md",
   "CHANGELOG.md",
 ];
 

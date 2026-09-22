@@ -9,7 +9,8 @@ and a question that takes ten thousand tokens to state can be trivially easy. ES
 measure the first thing, cheaply enough that anyone can rerun it.
 
 This repository is the home of the program: what the suites are, what each one measures, how
-the measurement works, and the [specification](specs/spec.md) that governs all of them.
+the measurement works, and the [constitution](specs/constitution.md) and its
+[amendments](specs/amendments/) that govern all of them.
 
 ## The suites
 
@@ -70,8 +71,9 @@ merely numeric.
 
 | Document | What it is |
 |---|---|
-| [specs/spec.md](specs/spec.md) | The normative specification: Part I is the original design basis, Part II is the first amendment, and future amendments are appended here. |
-| [specs/README.md](specs/README.md) | How the specification is amended, how amendments are numbered, and how sections are cited. |
+| [specs/constitution.md](specs/constitution.md) | The constitution: the design basis, in numbered sections. It governs, and it is amended rather than rewritten. |
+| [specs/amendments/](specs/amendments/) | One file per amendment. The first has ten decisions, each naming the provision it supersedes. |
+| [specs/README.md](specs/README.md) | The register of amendments, and how to add the next one. |
 | [benchmarks/gi.md](benchmarks/gi.md) | ESAC-GI in detail: the eight categories, the scoring, and how to run it. |
 | [benchmarks/ag.md](benchmarks/ag.md) | ESAC-AG in detail: what is specified, and what does not exist yet. |
 | [CHANGELOG.md](CHANGELOG.md) | Program-level changes: new suites, amendments, and documentation moves. |
