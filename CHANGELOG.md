@@ -15,6 +15,23 @@ Two things carry versions, and they are not the same kind of thing:
 
 ## [Unreleased]
 
+## [2026-09-23]
+
+### Added
+
+- **ESAC-AG has a start.** [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) now
+  carries the mock environment (a filesystem, a stateful service, and a shell, all in memory),
+  the harness (a multi-turn loop with a per-task cap of 10 to 15 tool calls and a failure
+  taxonomy), and the first of the seven categories, tool-call correctness, which is 10 of the
+  75 points. Nothing there is a score: a run covers part of the suite and is reported as
+  `INCOMPLETE`, which is the suite being honest rather than unfinished.
+
+### Changed
+
+- **The ESAC-AG page** now separates what exists from what does not, instead of saying the suite
+  is unimplemented, and names generated-code execution and the efficiency modifier's
+  normalisation among what is still missing.
+
 ## [2026-09-22]
 
 ### Added

@@ -2,9 +2,10 @@
 
 **Agentic Work and Capability. Specified in full, implemented not at all.**
 
-> **Status: not implemented.** There is no code, no harness, and no item bank. Nothing in
-> this page may be cited as a result, and no model has an ESAC-AG score. It is published
-> because the design decisions are the hard part, and they are already made.
+> **Status: partially implemented.** The mock environment, the harness, and one of the seven
+> categories exist, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG). **No model
+> has an ESAC-AG score and nothing in this page may be cited as a result**: a full run covers 10
+> of the 75 points, and the harness reports it as `INCOMPLETE` rather than as a number.
 
 ESAC-AG is the second suite in the ESAC program. Where ESAC-GI measures compressed reasoning
 in a single turn, ESAC-AG measures work performed across turns against an environment:
@@ -64,17 +65,29 @@ intended to apply here without modification:
   than in ESAC-GI because a mock environment makes infrastructure failure rarer and therefore
   easier to misclassify.
 
-## What does not exist yet
+## What exists, and what does not
 
-Recorded plainly, so that progress is measurable rather than asserted:
+Implemented, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG):
 
-- the mock environment: filesystem, API, and shell, with a state model that can be diffed;
-- the item bank and its generators, with reference solutions for the deterministic categories;
-- the harness: multi-turn execution, budget enforcement, and state-diff grading;
+- the **mock environment**: an in-memory filesystem with canonical snapshots, a mock service
+  whose operations are typed and stateful, and a shell over the same filesystem;
+- the **harness**: a multi-turn loop over an OpenAI-compatible tool-calling endpoint, with a
+  per-task cap of 10 to 15 tool calls, a transcript, and a failure taxonomy;
+- **tool-call correctness**, 10 of the 75 points: five items graded by exact match on the first
+  call, where every item's distractor is the plausible sibling operation.
+
+Still missing, recorded plainly so that progress is measurable rather than asserted:
+
+- the remaining six categories and the 65 points they carry;
+- generated-code execution, which the code and error-recovery categories need, in a child
+  process with a time limit, and the caveat that Node cannot restrict network access per
+  process;
 - hidden tests for the code and error-recovery tasks;
-- the rubric and the pinned judge for the ambiguity category;
+- the state-diff tasks for planning and state tracking, beyond the grader that exists;
+- the ambiguity rubric, the pinned judge, and the repeated judging protocol;
+- the efficiency modifier's normalisation, which needs a per-task envelope;
 - injection payloads that are realistic enough to be worth resisting;
-- a suite repository, which will be created when there is something to put in it.
+- the public and held-out pools, and the repository governance the other suites carry.
 
 ## Open questions
 

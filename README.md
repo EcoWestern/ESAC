@@ -17,13 +17,13 @@ the measurement works, and the [constitution](specs/constitution.md) and its
 | Suite | What it measures | Status | Size | Code |
 |---|---|---|---|---|
 | **ESAC-GI** | General intelligence: logic, math, factual recall, reading comprehension, abstraction, instruction-following, writing quality, and response-depth calibration. | v1.0.0 released | 42 items, 75 points | [EcoWestern/ESAC-GI](https://github.com/EcoWestern/ESAC-GI) |
-| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | Specified, not implemented | 75 points | none yet |
+| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | Partially implemented | 75 points, 22 planned items | [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) |
 
 - **[ESAC-GI](benchmarks/gi.md)** is built, released, and runnable today. Its answers are
   computed rather than stored, and 60 of its 75 points are graded without a judge.
-- **[ESAC-AG](benchmarks/ag.md)** is specified in full and implemented not at all. It runs
-  against a mock environment so that agentic evaluation can be cheap and deterministic
-  instead of slow and flaky.
+- **[ESAC-AG](benchmarks/ag.md)** is specified in full and implemented in part: the mock
+  environment and the harness exist, one of the seven categories has items, and no score can be
+  produced yet. Its runs report `INCOMPLETE` rather than a number.
 
 ## Five tenets
 
@@ -98,7 +98,9 @@ instructions are in the [ESAC-GI README](https://github.com/EcoWestern/ESAC-GI#r
 ## Status
 
 - **ESAC-GI v1.0.0** is released and runnable.
-- **ESAC-AG** is specified and unimplemented. No part of it may be cited as a result.
+- **ESAC-AG** is partially implemented: the mock environment, the harness, and one of seven
+  categories, which is 10 of the 75 points. No part of it may be cited as a result, and its own
+  reports say `INCOMPLETE` rather than producing a score.
 - **Held-out custody** is the one question the specification still leaves open: whether
   published held-out evaluations are run by a single maintainer or by a small trusted
   rotation. It determines how much weight a published number carries on release day, and it
