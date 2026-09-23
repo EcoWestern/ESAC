@@ -15,6 +15,28 @@ Two things carry versions, and they are not the same kind of thing:
 
 ## [Unreleased]
 
+### Added
+
+- **ESAC-AG now runs generated code in a sandbox.** Programs the model writes are executed under
+  Node's permission model in a throwaway directory, with no reads or writes outside it, no child
+  processes, no worker threads, no native addons, no inherited environment, and fixed time, heap,
+  and output caps. The sandbox proves that the platform is enforcing those refusals before
+  anything runs, and fails closed if it cannot. Node has no per-process network permission, so
+  that caveat is documented rather than solved.
+- **Five more of the seven ESAC-AG categories** are implemented in
+  [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG): bounded multi-step planning, code
+  generation and execution, error recovery, state tracking, and injection and safety resistance.
+  With tool-call correctness, that is 65 of the 75 points, 22 items, and every category that can
+  be graded deterministically.
+
+### Changed
+
+- **The ESAC-AG page** now separates what exists from what does not, names the execution sandbox
+  among what exists, and states that ambiguity handling and the pinned judge are the remaining
+  work. It also records two limits rather than leaving them to be discovered: the state items
+  measure a recall distance of a handful of steps, and the injection category grades the report
+  on a phrase list weighted at a quarter of one item.
+
 ## [2026-09-23]
 
 ### Added

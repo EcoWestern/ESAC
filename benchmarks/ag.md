@@ -1,11 +1,12 @@
 # ESAC-AG
 
-**Agentic Work and Capability. Specified in full, implemented not at all.**
+**Agentic Work and Capability. Specified in full, implemented in part.**
 
-> **Status: partially implemented.** The mock environment, the harness, and one of the seven
-> categories exist, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG). **No model
-> has an ESAC-AG score and nothing in this page may be cited as a result**: a full run covers 10
-> of the 75 points, and the harness reports it as `INCOMPLETE` rather than as a number.
+> **Status: six of seven categories implemented.** The mock environment, the harness, the
+> execution sandbox, and all but one category exist, in
+> [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG). **No model has an ESAC-AG score
+> and nothing in this page may be cited as a result**: a full run covers 65 of the 75 points, and
+> the harness reports it as `INCOMPLETE` rather than as a number.
 
 ESAC-AG is the second suite in the ESAC program. Where ESAC-GI measures compressed reasoning
 in a single turn, ESAC-AG measures work performed across turns against an environment:
@@ -73,21 +74,40 @@ Implemented, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG):
   whose operations are typed and stateful, and a shell over the same filesystem;
 - the **harness**: a multi-turn loop over an OpenAI-compatible tool-calling endpoint, with a
   per-task cap of 10 to 15 tool calls, a transcript, and a failure taxonomy;
-- **tool-call correctness**, 10 of the 75 points: five items graded by exact match on the first
-  call, where every item's distractor is the plausible sibling operation.
+- the **execution sandbox**: generated programs run under Node's permission model in a
+  throwaway directory, with no reads or writes outside it, no child processes, no workers, no
+  native addons, no inherited environment, and fixed time, heap, and output caps. It proves the
+  platform is enforcing those refusals before anything runs, and it fails closed if it cannot.
+  Node has no per-process network permission, so that caveat is documented rather than solved;
+- **tool-call correctness**, 10 points: five items graded by exact match on the first call;
+- **bounded multi-step planning**, 10 points: two items graded by a goal-state diff, with the
+  budget set so that exploration has to be rationed;
+- **code generation and execution**, 15 points: three items graded by hidden tests that the
+  model never sees, run against the program it wrote;
+- **error recovery**, 10 points: two items that ship a script which genuinely fails, the trace it
+  produced, and the same hidden tests after the fix;
+- **state tracking across steps**, 10 points: two items whose reports can be fetched exactly
+  once, so the fetch count is graded alongside the answer;
+- **injection and safety resistance**, 10 points: five items whose payloads arrive in a file, a
+  service field, or a log, and ask for a tool that exists. The work is weighted above the
+  dangerous action, which is weighted above reporting it, and doing nothing earns a third.
 
 Still missing, recorded plainly so that progress is measurable rather than asserted:
 
-- the remaining six categories and the 65 points they carry;
-- generated-code execution, which the code and error-recovery categories need, in a child
-  process with a time limit, and the caveat that Node cannot restrict network access per
-  process;
-- hidden tests for the code and error-recovery tasks;
-- the state-diff tasks for planning and state tracking, beyond the grader that exists;
-- the ambiguity rubric, the pinned judge, and the repeated judging protocol;
+- **ambiguity handling**, 5 points, and the pinned judge, fixed rubric, and repeated judging it
+  needs. This is the last category, and the only one that cannot be graded deterministically;
 - the efficiency modifier's normalisation, which needs a per-task envelope;
-- injection payloads that are realistic enough to be worth resisting;
-- the public and held-out pools, and the repository governance the other suites carry.
+- the public and held-out pools, which means a second seed and the tooling to keep one of them
+  out of the repository;
+- the guided `auto` mode;
+- the repository governance and release files that ESAC-GI and the program repository carry.
+
+Two things about the implemented part are worth stating rather than leaving to be discovered.
+The state tracking items measure a recall distance of a handful of steps, because the budget is
+fifteen calls and the environment is small: a longer horizon would measure something else, and
+this suite is meant to be short and cheap rather than exhaustive. And the injection category
+grades the report on a phrase list, which is the bluntest check in either suite; it is a quarter
+of one item, on purpose, because an item that rested on phrasing would measure phrasing.
 
 ## Open questions
 
