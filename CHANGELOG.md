@@ -15,6 +15,13 @@ Two things carry versions, and they are not the same kind of thing:
 
 ## [Unreleased]
 
+### Changed
+
+- **ESAC-AG is now implementation-complete.** The suite has all seven categories, scored
+  efficiency envelopes, a reproducible public JSONL artifact, and public/held-out pool handling.
+  It is still not a benchmark release: the implementation version is 0.3.0 and no comparable
+  ESAC-AG score exists until the release is frozen.
+
 ### Added
 
 - **ESAC-AG now runs generated code in a sandbox.** Programs the model writes are executed under

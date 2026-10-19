@@ -17,7 +17,7 @@ the measurement works, and the [constitution](specs/constitution.md) and its
 | Suite | What it measures | Status | Size | Code |
 |---|---|---|---|---|
 | **ESAC-GI** | General intelligence: logic, math, factual recall, reading comprehension, abstraction, instruction-following, writing quality, and response-depth calibration. | v1.0.0 released | 42 items, 75 points | [EcoWestern/ESAC-GI](https://github.com/EcoWestern/ESAC-GI) |
-| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | Six of seven categories implemented | 65 of 75 points, 22 items | [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) |
+| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | Implementation complete, release not frozen | 75 points, 22 items | [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) |
 
 - **[ESAC-GI](benchmarks/gi.md)** is built, released, and runnable today. Its answers are
   computed rather than stored, and 60 of its 75 points are graded without a judge.

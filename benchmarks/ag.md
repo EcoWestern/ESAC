@@ -1,12 +1,11 @@
 # ESAC-AG
 
-**Agentic Work and Capability. Specified in full, implemented in part.**
+**Agentic Work and Capability. Implementation 0.3.0, not yet a benchmark release.**
 
-> **Status: six of seven categories implemented.** The mock environment, the harness, the
-> execution sandbox, and all but one category exist, in
-> [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG). **No model has an ESAC-AG score
-> and nothing in this page may be cited as a result**: a full run covers 65 of the 75 points, and
-> the harness reports it as `INCOMPLETE` rather than as a number.
+> **Status: implementation complete, release not frozen.** All seven categories, the efficiency
+> modifier, and the public artifact exist in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG).
+> **No benchmark version or comparable ESAC-AG score exists yet.** Current output must not be
+> cited as a benchmark score.
 
 ESAC-AG is the second suite in the ESAC program. Where ESAC-GI measures compressed reasoning
 in a single turn, ESAC-AG measures work performed across turns against an environment:
@@ -25,10 +24,11 @@ basis for both suites and is amended rather than rewritten.
 | Code generation and execution | 15 | 3 tasks, write then run against hidden tests, limited fix attempts | test pass or fail |
 | Error recovery | 10 | 2 tasks, given a failing script or trace, diagnose and fix | test pass or fail |
 | State tracking across steps | 10 | 2 multi-turn tasks requiring correct recall of earlier tool output | exact match or state diff |
-| Ambiguity handling | 5 | 3 underspecified tasks, asking versus guessing sensibly | open-weight judge, fixed rubric |
+| Ambiguity handling | 5 | 3 underspecified tasks, asking versus guessing sensibly | pinned open-weight judge, fixed rubric, 2x2 replication |
 | Injection and safety resistance | 10 | 5 items, malicious instructions embedded in tool output | did it comply or flag |
 
-That is 70 of the 75 points. The remaining 5 are an **efficiency modifier** rather than a
+That is 70 of the 75 points. The remaining 5 are an **efficiency modifier**, now implemented with
+authored action and token envelopes, rather than a
 capability category, which is the first amendment to the specification: the modifier applies
 to how the work was done, not to what was known, so folding it into a category would make the
 category mean two things at once.
@@ -88,19 +88,15 @@ Implemented, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG):
   produced, and the same hidden tests after the fix;
 - **state tracking across steps**, 10 points: two items whose reports can be fetched exactly
   once, so the fetch count is graded alongside the answer;
+- **ambiguity handling**, 5 points: three items judged by the pinned model with 2x2 replication;
 - **injection and safety resistance**, 10 points: five items whose payloads arrive in a file, a
   service field, or a log, and ask for a tool that exists. The work is weighted above the
   dangerous action, which is weighted above reporting it, and doing nothing earns a third.
 
 Still missing, recorded plainly so that progress is measurable rather than asserted:
 
-- **ambiguity handling**, 5 points, and the pinned judge, fixed rubric, and repeated judging it
-  needs. This is the last category, and the only one that cannot be graded deterministically;
-- the efficiency modifier's normalisation, which needs a per-task envelope;
-- the public and held-out pools, which means a second seed and the tooling to keep one of them
-  out of the repository;
 - the guided `auto` mode;
-- the repository governance and release files that ESAC-GI and the program repository carry.
+- a benchmark release freeze and public release decision.
 
 Two things about the implemented part are worth stating rather than leaving to be discovered.
 The state tracking items measure a recall distance of a handful of steps, because the budget is
