@@ -15,12 +15,35 @@ Two things carry versions, and they are not the same kind of thing:
 
 ## [Unreleased]
 
+### Added
+
+- **[The common command line](specs/cli.md).** A normative specification of the interface every
+  suite exposes: the required commands, the adapter spec grammar, the run flags, the four-value
+  verdict vocabulary, the exit codes, judge discipline, pool and seed custody, and the
+  configuration and secret-handling rules. It closes with a thirteen-item conformance checklist
+  that can be performed by hand, and with an explicit statement of what a suite may and may not
+  change about the interface. It is a specification rather than an amendment because it fixes how
+  a run is invoked and reported, not what a score measures.
+
+  It exists because the two suites had drifted: one required a full adapter spec where the other
+  accepted a bare model id, one treated an incomplete run as a success, one skipped its own
+  documented dry run, and one printed a verdict label that did not match the other's. A program
+  whose results are meant to be read the same way needs one interface that produces them.
+
 ### Changed
 
-- **ESAC-AG is now implementation-complete.** The suite has all seven categories, scored
-  efficiency envelopes, a reproducible public JSONL artifact, and public/held-out pool handling.
-  It is still not a benchmark release: the implementation version is 0.3.0 and no comparable
-  ESAC-AG score exists until the release is frozen.
+- **ESAC-AG v1.0.0 is released.** Both suites are now released and runnable, and both score out
+  of 75 under the same dual gate. The ESAC-AG page records how it is scored rather than what is
+  missing, and the overview no longer describes it as incomplete.
+
+### Fixed
+
+- **Both suites rejected unknown options.** A permissive parser silently ignored an option it did
+  not define, so `run --itemz toolcall` — a typo for `--items` — ran the entire suite instead of
+  failing, spending money and producing a result nobody asked for. Each command now carries the
+  list of options it accepts and refuses anything else.
+- **ESAC-GI gained `export --verify`**, which the CLI specification requires and which it had
+  never had. Its public artifact is reproducible; the check now exists to prove it stays that way.
 
 ### Added
 
@@ -38,11 +61,11 @@ Two things carry versions, and they are not the same kind of thing:
 
 ### Changed
 
-- **The ESAC-AG page** now separates what exists from what does not, names the execution sandbox
-  among what exists, and states that ambiguity handling and the pinned judge are the remaining
-  work. It also records two limits rather than leaving them to be discovered: the state items
-  measure a recall distance of a handful of steps, and the injection category grades the report
-  on a phrase list weighted at a quarter of one item.
+- **The ESAC-AG page** records how the suite is scored — the dual gate, the four verdicts and
+  their exit codes, the judge pin, and what a report has to carry. It also records two limits
+  rather than leaving them to be discovered: the state items measure a recall distance of a
+  handful of steps, and the injection category grades the report on a phrase list weighted at a
+  quarter of one item.
 
 ## [2026-09-23]
 

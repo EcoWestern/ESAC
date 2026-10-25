@@ -6,6 +6,7 @@ The ESAC specification is two kinds of document, and the split is deliberate.
 |---|---|
 | [constitution.md](constitution.md) | The design basis, in numbered sections. It governs, and it is amended rather than rewritten. |
 | [amendments/](amendments/) | One file per amendment. Each names the provisions of the constitution it supersedes, and each governs where it disagrees with the constitution. |
+| [cli.md](cli.md) | The common command line: the interface every suite exposes. Normative for a new suite, and the contract behind the verdicts and exit codes. It specifies how a run is invoked, not what it measures, so it does not need the amendment process. |
 
 ## Register of amendments
 

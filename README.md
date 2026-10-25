@@ -9,22 +9,22 @@ and a question that takes ten thousand tokens to state can be trivially easy. ES
 measure the first thing, cheaply enough that anyone can rerun it.
 
 This repository is the home of the program: what the suites are, what each one measures, how
-the measurement works, and the [constitution](specs/constitution.md) and its
-[amendments](specs/amendments/) that govern all of them.
+the measurement works, the [constitution](specs/constitution.md) and its
+[amendments](specs/amendments/) that govern all of them, and the
+[common command line](specs/cli.md) they all expose.
 
 ## The suites
 
 | Suite | What it measures | Status | Size | Code |
 |---|---|---|---|---|
 | **ESAC-GI** | General intelligence: logic, math, factual recall, reading comprehension, abstraction, instruction-following, writing quality, and response-depth calibration. | v1.0.0 released | 42 items, 75 points | [EcoWestern/ESAC-GI](https://github.com/EcoWestern/ESAC-GI) |
-| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | Implementation complete, release not frozen | 75 points, 22 items | [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) |
+| **ESAC-AG** | Agentic work: tool-call correctness, planning under a tight step budget, code generation, error recovery, state tracking, ambiguity handling, and resistance to injected instructions. | v1.0.0 released | 75 points, 22 items | [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG) |
 
 - **[ESAC-GI](benchmarks/gi.md)** is built, released, and runnable today. Its answers are
   computed rather than stored, and 60 of its 75 points are graded without a judge.
-- **[ESAC-AG](benchmarks/ag.md)** is specified in full and implemented in part: six of its seven
-  categories have items, generated code runs in a sandbox that fails closed, and the ambiguity
-  category and its judge are the remaining work. No score can be produced yet, so its runs report
-  `INCOMPLETE` rather than a number.
+- **[ESAC-AG](benchmarks/ag.md)** is also released at v1.0: all seven categories have items,
+  generated code runs in a sandbox that fails closed, and the ambiguity category is graded by the
+  same pinned judge ESAC-GI uses. A full run produces a comparable score.
 
 ## Five tenets
 
@@ -51,7 +51,8 @@ merely numeric.
 - **Items are generators, not stored questions.** An item produces an instance and its
   expected answer from a seed, so the answer is computed. Memorising an answer stops working,
   because the instance is a different problem under a different seed.
-- **Determinism where it is possible.** ESAC-GI grades 60 of its 75 points programmatically.
+- **Determinism where it is possible.** ESAC-GI grades 60 of its 75 points programmatically and
+  ESAC-AG grades 70 of its 75.
   Instance identity derives from the dataset seed and the item id alone, never from the run,
   the timestamp, or the model, so every model in a comparison sees byte-identical instances.
 - **A judge only where judgement is unavoidable.** 15 of ESAC-GI's 75 points are rubric
@@ -75,6 +76,7 @@ merely numeric.
 | [specs/constitution.md](specs/constitution.md) | The constitution: the design basis, in numbered sections. It governs, and it is amended rather than rewritten. |
 | [specs/amendments/](specs/amendments/) | One file per amendment. The first has ten decisions, each naming the provision it supersedes. |
 | [specs/README.md](specs/README.md) | The register of amendments, and how to add the next one. |
+| [specs/cli.md](specs/cli.md) | The common command line: the interface every suite must expose, and the verdict and exit-code contract that makes a run's outcome machine-readable. |
 | [benchmarks/gi.md](benchmarks/gi.md) | ESAC-GI in detail: the eight categories, the scoring, and how to run it. |
 | [benchmarks/ag.md](benchmarks/ag.md) | ESAC-AG in detail: what is specified, and what does not exist yet. |
 | [CHANGELOG.md](CHANGELOG.md) | Program-level changes: new suites, amendments, and documentation moves. |
@@ -99,9 +101,9 @@ instructions are in the [ESAC-GI README](https://github.com/EcoWestern/ESAC-GI#r
 ## Status
 
 - **ESAC-GI v1.0.0** is released and runnable.
-- **ESAC-AG** has six of its seven categories implemented, so 65 of the 75 points exist. No part
-  of it may be cited as a result, and its own reports say `INCOMPLETE` rather than producing a
-  score.
+- **ESAC-AG v1.0.0** is released and runnable: 22 items, 75 points, every category populated, and
+  a full run produces a `PASS`, `FAIL`, or `INCOMPLETE` verdict under the same dual gate as
+  ESAC-GI.
 - **Held-out custody** is the one question the specification still leaves open: whether
   published held-out evaluations are run by a single maintainer or by a small trusted
   rotation. It determines how much weight a published number carries on release day, and it

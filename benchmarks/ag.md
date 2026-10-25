@@ -1,11 +1,11 @@
 # ESAC-AG
 
-**Agentic Work and Capability. Implementation 0.3.0, not yet a benchmark release.**
+**Agentic Work and Capability. 22 items, 75 points, seven categories. Released as v1.0.**
 
-> **Status: implementation complete, release not frozen.** All seven categories, the efficiency
-> modifier, and the public artifact exist in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG).
-> **No benchmark version or comparable ESAC-AG score exists yet.** Current output must not be
-> cited as a benchmark score.
+> **Status: released.** All seven categories, the efficiency modifier, and the reproducible public
+> artifact exist in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG). Scores are
+> comparable only as `ESAC-AG v1.0` results, and only when produced with the pinned judge and the
+> documented protocol.
 
 ESAC-AG is the second suite in the ESAC program. Where ESAC-GI measures compressed reasoning
 in a single turn, ESAC-AG measures work performed across turns against an environment:
@@ -66,7 +66,7 @@ intended to apply here without modification:
   than in ESAC-GI because a mock environment makes infrastructure failure rarer and therefore
   easier to misclassify.
 
-## What exists, and what does not
+## What exists
 
 Implemented, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG):
 
@@ -93,11 +93,6 @@ Implemented, in [EcoWestern/ESAC-AG](https://github.com/EcoWestern/ESAC-AG):
   service field, or a log, and ask for a tool that exists. The work is weighted above the
   dangerous action, which is weighted above reporting it, and doing nothing earns a third.
 
-Still missing, recorded plainly so that progress is measurable rather than asserted:
-
-- the guided `auto` mode;
-- a benchmark release freeze and public release decision.
-
 Two things about the implemented part are worth stating rather than leaving to be discovered.
 The state tracking items measure a recall distance of a handful of steps, because the budget is
 fifteen calls and the environment is small: a longer horizon would measure something else, and
@@ -105,13 +100,34 @@ this suite is meant to be short and cheap rather than exhaustive. And the inject
 grades the report on a phrase list, which is the bluntest check in either suite; it is a quarter
 of one item, on purpose, because an item that rested on phrasing would measure phrasing.
 
+## How it is scored
+
+The protocol is the one in the [shared architecture](../README.md#how-a-suite-works), applied to
+an environment rather than to a single turn.
+
+- **Passing is a dual gate:** 60 percent in every category **and** 60 percent overall. A strong
+  average does not rescue a weak category.
+- **Verdicts are explicit.** `PASS`, `FAIL`, `INCOMPLETE` for a run that did not cover the suite,
+  and `NOT VALID` for a run under a judge that is not the pinned one. Exit codes distinguish
+  them: 0, 1, 1, and 3, with an infrastructure failure exiting 2 so an outage is never reported
+  as a score.
+- **The judge is pinned** to `xiaomi/mimo-v2.6-pro`, the same model ESAC-GI pins, with the same
+  2x2 replication. A judge other than that one is refused unless the evaluator explicitly asks
+  for it, and the resulting run is reported without a verdict because the judge decides the
+  ambiguity category.
+- **Reports carry their conditions:** the version tag, the pool, the seed fingerprint, the judge
+  actually used, and the efficiency modifier's award. A score without them is not a result.
+
 ## Open questions
 
 - **Held-out custody.** The same open question as the rest of the program: whether published
   held-out evaluations are run by one maintainer or by a small trusted rotation. It is
   [flagged as open in the constitution](../specs/constitution.md#7-open-questions).
-- **Budget calibration.** The turn budgets above are specified but not yet validated against
-  real models, and a budget that is merely generous measures nothing.
+- **Budget calibration.** The turn budgets above are specified but have not been validated
+  against real models in public, and a budget that is merely generous measures nothing.
 - **What counts as compliance under injection.** The category distinguishes complying from
   flagging, which is checkable, from being manipulated, which is not. The line between
   complying and flagging has to be drawn tightly enough to be deterministic.
+- **Field size.** Twenty-two items across seven categories is a directional signal, not a
+  fine-grained ranking. That is a consequence of the short-and-cheap tenet rather than an
+  oversight, and it is the first thing a v2 would have to argue about.
