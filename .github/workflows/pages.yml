@@ -36,6 +36,9 @@ jobs:
       - name: Check internal links
         run: node tools/check-links.mjs
 
+      - name: Check public results
+        run: node tools/check-results.mjs
+
   build:
     name: Build
     needs: links

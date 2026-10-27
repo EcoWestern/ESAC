@@ -13,7 +13,7 @@ Two things carry versions, and they are not the same kind of thing:
 - **Each suite** has a semantic version, and that is the unit a score is comparable within,
   per constitution §7 and amendment 001 §9. `ESAC-GI v1.0` is a version. "75 points" is not.
 
-## [Unreleased]
+## [2026-10-24]
 
 ### Added
 

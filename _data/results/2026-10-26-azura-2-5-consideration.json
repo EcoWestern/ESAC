@@ -1,0 +1,33 @@
+{
+  "name": "Azura 2.5-Consideration",
+  "provider": "EcoWestern AI",
+  "published_at": "2026-10-26",
+  "model_url": "https://ai.ecowestern.net/azura",
+  "notes": "Published average scores from two runs. Both benchmark gates passed.",
+  "results": [
+    {
+      "benchmark": "ESAC-GI",
+      "version": "v1",
+      "score": 66.69,
+      "max_score": 75,
+      "runs": [68.73, 64.64],
+      "gates": ["PASS", "PASS"],
+      "verdict": "PASS",
+      "pool": "public",
+      "evaluated_at": "2026-10-26",
+      "report_url": "https://ai.ecowestern.net/azura"
+    },
+    {
+      "benchmark": "ESAC-AG",
+      "version": "v1",
+      "score": 65.95,
+      "max_score": 75,
+      "runs": [67.01, 64.89],
+      "gates": ["PASS", "PASS"],
+      "verdict": "PASS",
+      "pool": "public",
+      "evaluated_at": "2026-10-26",
+      "report_url": "https://ai.ecowestern.net/azura"
+    }
+  ]
+}

@@ -1,12 +1,11 @@
 # Contributing
 
 This repository holds the ESAC program: the specification, the description of each suite,
-and the program level documentation. **Pull requests are not accepted**, and they are closed
-without review.
+and the program level documentation. Pull requests adding public model results are welcome.
+Pull requests changing the specification remain subject to maintainer review.
 
-That is a policy about the instrument rather than about any individual piece of work. The
-same reasoning that applies to the suites applies here, and it is worth repeating because the
-document is the normative one:
+Specification changes have a different review path because the specification is the normative
+instrument. Every suite cites it by section number, so:
 
 - **One clause to cite.** Every suite cites the specification by section number. If the
   document could change through an external merge path, a citation in a source comment would
@@ -18,6 +17,12 @@ document is the normative one:
   change for the affected suite. That decision has to be made deliberately and in one place.
 
 ## What is welcome
+
+**Public model results.** Add one JSON file to [`_data/results/`](https://github.com/EcoWestern/ESAC/tree/main/_data/results)
+using the [result format](results/README.md). The file becomes one model card on the
+[public results page](results/index.md), and CI checks its required fields and score ranges.
+Include a public report link and the exact benchmark version, pool, and evaluation date. Do not
+include held-out seeds, answer keys, credentials, or private evaluation material.
 
 **Specification corrections.** If a clause is ambiguous, contradicts another clause, or
 describes something the suites cannot implement, open an issue. Quote the section number and
@@ -50,3 +55,25 @@ The consequence for editing: a page needs no YAML front matter, and a relative l
 as `amendments/001-first-amendment.md` works both on GitHub and on the published site.
 `tools/check-links.mjs` verifies that every relative link resolves and that every page named in
 the site navigation exists, so a rename cannot quietly break the site.
+
+### Preview locally
+
+Ruby 3.x is required; Ruby 4.x is not yet compatible with the GitHub Pages/Jekyll versions used
+here. On macOS with Homebrew, install and select Ruby 3.3 first:
+
+```bash
+brew install ruby@3.3
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+```
+
+Install the dependencies once, then start the same GitHub Pages-compatible Jekyll build used by
+the deployment workflow:
+
+```bash
+bundle install
+bundle exec jekyll serve --baseurl /ESAC
+```
+
+Open [http://localhost:4000/ESAC/](http://localhost:4000/ESAC/) in a browser. The public results
+page is at `/ESAC/results/`. Jekyll watches the source files and rebuilds the site as they change;
+refresh the browser after editing a JSON result entry.

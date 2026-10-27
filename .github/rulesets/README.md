@@ -28,12 +28,11 @@ required checks. The two repositories have different CI, so they cannot share on
 Both carry a bypass for the repository admin role (`actor_id: 5`). That is deliberate, and it is
 the part worth thinking about:
 
-- **With the bypass**, the maintainer can still push to `main` directly, which is how this project
-  is developed, and CI stays advisory for that role while remaining binding for anyone else.
-- **Without the bypass**, `required_status_checks` blocks direct pushes entirely, because a check
-  cannot have passed on a commit that does not exist yet. That effectively requires a
-  pull-request flow, which contradicts the policy in `CONTRIBUTING.md`. Removing the
-  `bypass_actors` block is a policy change rather than a tightening of one.
+- **With the bypass**, the maintainer can still push to `main` directly, while outside contributors
+  can use the pull-request flow and receive the same CI checks.
+- **Without the bypass**, `required_status_checks` requires every change, including maintainer
+  changes, to arrive through a pull request. Removing the `bypass_actors` block is a workflow change
+  rather than a tightening of one.
 
 ## The required check
 

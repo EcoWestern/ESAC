@@ -1,0 +1,19 @@
+{
+  "name": "Azura 2-Consideration",
+  "provider": "EcoWestern AI",
+  "published_at": "2026-10-26",
+  "model_url": "https://ai.ecowestern.net/azura",
+  "notes": "Published ESAC-AG v1 score.",
+  "results": [
+    {
+      "benchmark": "ESAC-AG",
+      "version": "v1",
+      "score": 66.83,
+      "max_score": 75,
+      "verdict": "PASS",
+      "pool": "public",
+      "evaluated_at": "2026-10-26",
+      "report_url": "https://ai.ecowestern.net/azura"
+    }
+  ]
+}

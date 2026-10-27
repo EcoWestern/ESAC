@@ -80,7 +80,8 @@ merely numeric.
 | [benchmarks/gi.md](benchmarks/gi.md) | ESAC-GI in detail: the eight categories, the scoring, and how to run it. |
 | [benchmarks/ag.md](benchmarks/ag.md) | ESAC-AG in detail: what is specified, and what does not exist yet. |
 | [CHANGELOG.md](CHANGELOG.md) | Program-level changes: new suites, amendments, and documentation moves. |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution policy: issues and forks, not pull requests. |
+| [Public results](results/index.md) | Published model results, one JSON entry per model. |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution policy, including how to add a public model result. |
 
 ## Running a suite
 
@@ -113,9 +114,8 @@ instructions are in the [ESAC-GI README](https://github.com/EcoWestern/ESAC-GI#r
 
 ESAC is published under the MIT licence, to be read, run, audited, and forked. Issues are
 open and welcome, especially corrections to the specification and challenges to an item.
-Pull requests are not accepted, and the reason is in [CONTRIBUTING.md](CONTRIBUTING.md): a
-published score has to be traceable to a specific, trusted revision, so the measurement
-cannot change through an external merge path.
+Pull requests adding public model results are welcome; the result format and CI checks keep each
+published score traceable to a specific benchmark version and public report.
 
 The specification lives here rather than in a suite repository for the same reason. When two
 suites cite the same clause, there has to be one clause to cite.

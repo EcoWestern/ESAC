@@ -59,10 +59,9 @@ workflow jobs. This repository requires `Check links`, which is deliberately a j
 rather than part of the site build, so that it runs on pull requests as well as on `main` and does
 not depend on Pages being enabled.
 
-Both carry a bypass for the repository admin role, and that is deliberate. Requiring status checks
-without a bypass blocks direct pushes to `main` entirely, because a check cannot have passed on a
-commit that does not exist yet, which would force the pull request flow that `CONTRIBUTING.md`
-rules out. Removing the bypass is a policy change rather than a tightening.
+Both carry a bypass for the repository admin role, and that is deliberate. It lets maintainers push
+directly while outside contributors use pull requests for data additions and receive the same CI
+checks. Removing the bypass would require every change to arrive through a pull request.
 
 The check names in `main.json` must match the CI job names exactly, matrix value included, and they
 are only selectable once CI has run on the branch.
@@ -103,7 +102,7 @@ rather than shipping, and the branch ruleset can require it.
 
 ## Pull requests
 
-Neither repository accepts them, and both answer automatically: a pull request from outside the
-organisation is commented with `.github/pull-request-notice.md` and closed by
-`.github/workflows/close-pull-requests.yml`, and members, collaborators, and maintainers are
-exempt. A pull request opened before that workflow existed stays open until it is closed by hand.
+This repository accepts pull requests that add public model result files under `_data/results/`.
+Maintainers review the linked public report, benchmark version, pool, and score before merging.
+Specification changes and suite implementation changes remain maintainer-led; open an issue first
+for those topics.

@@ -1,0 +1,33 @@
+{
+  "name": "Azura 2.5-Basic",
+  "provider": "EcoWestern AI",
+  "published_at": "2026-10-26",
+  "model_url": "https://ai.ecowestern.net/azura",
+  "notes": "Published average scores from two runs. Both benchmark gates failed.",
+  "results": [
+    {
+      "benchmark": "ESAC-GI",
+      "version": "v1",
+      "score": 65.31,
+      "max_score": 75,
+      "runs": [66.17, 64.45],
+      "gates": ["FAIL", "FAIL"],
+      "verdict": "FAIL",
+      "pool": "public",
+      "evaluated_at": "2026-10-26",
+      "report_url": "https://ai.ecowestern.net/azura"
+    },
+    {
+      "benchmark": "ESAC-AG",
+      "version": "v1",
+      "score": 51.87,
+      "max_score": 75,
+      "runs": [53.07, 50.67],
+      "gates": ["FAIL", "FAIL"],
+      "verdict": "FAIL",
+      "pool": "public",
+      "evaluated_at": "2026-10-26",
+      "report_url": "https://ai.ecowestern.net/azura"
+    }
+  ]
+}
